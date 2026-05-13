@@ -5,10 +5,15 @@
     <title>Liste des livres</title>
 </head>
 <body>
+
+<a href="/bibliotheque/ajout">ajouter un nouveau livre</a>
     <ul>
-        {% for Livre in liste_livre %}
-            <p> {{Livre}}</p>
-        {%endfor%}
+      {%for l in liste_livre%}
+      <li>
+        {{l.titre}} {{l.id}} <a href="/bibliotheque/read/{{l.id}}/">read</a> <a href="/bibliotheque/update/{{l.id}}/">update</a>
+        <a href="/bibliotheque/delete/{{l.id}}/">delete</a>
+      </li>
+      {%endfor%}
     </ul>
 
 </body>

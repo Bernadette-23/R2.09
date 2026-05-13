@@ -1,6 +1,8 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from .forms import LivreForm
 from . import models
+from .models import Livre
 
 # Create your views here.
 def ajout(request):
@@ -34,4 +36,27 @@ def read(request, id):
 
 def update(request, id):
     livre = models.Livre.objects.get(pk=id)
-    lform =
+    lform = LivreForm(livre.__dict__)
+    return render(request,'bibliotheque/update.html', {"livre":livre, "form":lform})
+# ou  -->  lform = LivreForm(instace=livre)
+
+#    all.html = update.html(dictionnaire)
+#    return render(request, "bibliotheque/update.html", {"livvre": livre})
+
+def updatetraitement(request, id):
+    if request.method =="POST":
+        lform = LivreForm(request.POST)
+        if lform.is_valid():
+            livre = lform.save(commit=False)
+            livre.id = id
+            livre.save()
+            return HttpResponseRedirect("/bibliotheque/")
+        else:
+            livre = Livre.objects.get(pk=id)
+            return render(request, 'bibliotheque/update.html', {"livre":livre, "form":lform})
+
+
+def delete(request, id):
+    livre = Livre.objects.get(pk=id)
+    livre.delete()
+    return HttpResponseRedirect('/bibliotheque/')
