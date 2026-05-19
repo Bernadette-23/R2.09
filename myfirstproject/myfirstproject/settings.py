@@ -37,8 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'myfirstapp.apps.MyfirstappConfig',
-    'bibliotheque.apps.BibliothequeConfig',
+#   'myfirstapp.apps.MyfirstappConfig',
+#   'bibliotheque.apps.BibliothequeConfig',
     'playlist.apps.PlaylistConfig',
 ]
 
