@@ -9,4 +9,5 @@ urlpatterns = [
     path('updatetraitement/<int:id>/', views.updatetraitement),
     path('delete/<int:id>/', views.delete),
     path('read/<int:id>/', views.read),
+    path('', views.all),
 ]
