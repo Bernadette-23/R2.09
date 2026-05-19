@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'myfirstapp.apps.MyfirstappConfig',
     'bibliotheque.apps.BibliothequeConfig',
+    'playlist.apps.PlaylistConfig',
 ]
 
 MIDDLEWARE = [
